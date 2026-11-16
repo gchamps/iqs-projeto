@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -58,29 +59,29 @@ class ProdutoControllerTest {
     }
 
     @Test
-    void criaProdutoIgnorandoIdRecebido() {
-        Produto entrada = produto(77L);
-        when(repository.save(entrada)).thenReturn(entrada);
-        controller.criar(entrada);
-        assertNull(entrada.getId());
-        verify(repository).save(entrada);
+    void criaProdutoSemId() {
+        ArgumentCaptor<Produto> captor = ArgumentCaptor.forClass(Produto.class);
+        when(repository.save(captor.capture())).thenAnswer(inv -> inv.getArgument(0));
+        controller.criar(new ProdutoRequest("Teclado", new BigDecimal("10.00")));
+        assertNull(captor.getValue().getId());
+        assertEquals("Teclado", captor.getValue().getNome());
     }
 
     @Test
     void atualizaProdutoExistente() {
-        Produto entrada = produto(null);
+        ArgumentCaptor<Produto> captor = ArgumentCaptor.forClass(Produto.class);
         when(repository.existsById(5L)).thenReturn(true);
-        when(repository.save(entrada)).thenReturn(entrada);
-        controller.atualizar(5L, entrada);
-        assertEquals(5L, entrada.getId());
+        when(repository.save(captor.capture())).thenAnswer(inv -> inv.getArgument(0));
+        controller.atualizar(5L, new ProdutoRequest("Mouse", BigDecimal.ONE));
+        assertEquals(5L, captor.getValue().getId());
     }
 
     @Test
     void atualizarInexistenteLanca404() {
         when(repository.existsById(5L)).thenReturn(false);
-        Produto entrada = produto(null);
+        ProdutoRequest entrada = new ProdutoRequest("Mouse", BigDecimal.ONE);
         assertThrows(ResponseStatusException.class, () -> controller.atualizar(5L, entrada));
-        verify(repository, never()).save(entrada);
+        verify(repository, never()).save(org.mockito.ArgumentMatchers.any());
     }
 
     @Test
