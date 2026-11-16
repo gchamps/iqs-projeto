@@ -20,6 +20,8 @@ A API sobe em `http://localhost:8080` e o Swagger UI em `http://localhost:8080/s
 |-------------------|--------|---------------------------|
 | `/usuarios`       | POST   | Cria um novo usuário      |
 | `/usuarios/{id}`  | GET    | Obtém usuário por ID      |
+| `/produtos`       | GET/POST | Lista / cria produtos (H2, JPA) |
+| `/produtos/{id}`  | GET/PUT/DELETE | Busca / atualiza / remove produto |
 
 Exemplo:
 ```bash
@@ -46,6 +48,7 @@ curl -X POST http://localhost:8080/usuarios -H "Content-Type: application/json" 
 | 9  | Git Flow, GitHub Actions, code review | `docs/aula-09-git-flow.md`, `.github/workflows/pr-validation.yml`, `Calculadora`, `ValidadorSenha`, `NotificacaoService` |
 | 10 | CI/CD | `.github/workflows/ci.yml`, `quality-gate.yml`, `pipeline-completo.yml`, `Jenkinsfile` |
 | 11 | Análise estática | `docs/aula-11-sonarqube.md`, pacote `imposto` (Strategy Pattern) |
+| 13 | Projeto final (MVP) | CRUD `Produto` (JPA + H2 + Lombok), `ProdutoControllerTest` (Mockito), `ProdutoControllerIT`, tag `v0.1` |
 | 12 | Documentação | Javadoc nas classes, `UsuarioController` (OpenAPI), `ARCHITECTURE.md`, `docs/confluence-template.md` |
 
 Veja também [ARCHITECTURE.md](ARCHITECTURE.md).
