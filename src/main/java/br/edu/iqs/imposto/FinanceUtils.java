@@ -10,7 +10,7 @@ import java.util.Map;
  * {@code if/else}). Agora cada imposto e uma {@link ImpostoStrategy} e o metodo
  * principal tem complexidade baixa.
  *
- * @author Douglas Duarte
+ * @author Gabriel Champin
  * @version 2.0
  */
 public class FinanceUtils {

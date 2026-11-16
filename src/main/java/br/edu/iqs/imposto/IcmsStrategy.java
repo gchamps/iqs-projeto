@@ -3,7 +3,7 @@ package br.edu.iqs.imposto;
 /**
  * ICMS: aliquota fixa de 17%.
  *
- * @author Douglas Duarte
+ * @author Gabriel Champin
  * @version 1.0
  */
 public class IcmsStrategy extends AliquotaFixaStrategy {

@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Ponto de entrada da aplicacao.
  *
- * @author Douglas Duarte
+ * @author Gabriel Champin
  * @version 1.0
  */
 @SpringBootApplication

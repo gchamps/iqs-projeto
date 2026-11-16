@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 /**
  * Servico de notificacoes por e-mail (desafio colaborativo da Aula 9).
  *
- * @author Douglas Duarte
+ * @author Gabriel Champin
  * @version 1.0
  */
 public class NotificacaoService {

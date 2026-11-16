@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 /**
  * Estrategia de calculo de um tipo de imposto (Strategy Pattern, Aula 11).
  *
- * @author Douglas Duarte
+ * @author Gabriel Champin
  * @version 1.0
  */
 public interface ImpostoStrategy {

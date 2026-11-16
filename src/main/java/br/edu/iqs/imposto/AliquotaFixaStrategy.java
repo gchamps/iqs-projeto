@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 /**
  * Estrategia com aliquota fixa (ex.: ICMS 17%, ISS 5%).
  *
- * @author Douglas Duarte
+ * @author Gabriel Champin
  * @version 1.0
  */
 public class AliquotaFixaStrategy implements ImpostoStrategy {

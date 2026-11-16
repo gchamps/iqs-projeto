@@ -20,7 +20,7 @@ Exemplo preenchido para este projeto:
 ```
 h2. Visão Geral
 *Data de Criação*: 16/11/2026
-*Responsável*: Douglas Duarte
+*Responsável*: Gabriel Champin
 
 h3. Fluxo Principal
 {code:java}

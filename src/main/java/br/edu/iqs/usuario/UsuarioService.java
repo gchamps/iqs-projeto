@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 /**
  * Servico de usuarios com armazenamento em memoria.
  *
- * @author Douglas Duarte
+ * @author Gabriel Champin
  * @version 1.0
  */
 @Service
