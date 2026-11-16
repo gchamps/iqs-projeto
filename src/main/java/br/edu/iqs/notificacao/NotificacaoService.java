@@ -16,7 +16,7 @@ public class NotificacaoService {
     }
 
     private static final Pattern EMAIL =
-            Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*\\.[A-Za-z]{2,}$");
+            Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
 
     /**
      * Valida o formato de um e-mail.
@@ -25,7 +25,7 @@ public class NotificacaoService {
      * @return {@code true} se o formato e valido
      */
     public boolean emailValido(String email) {
-        return email != null && EMAIL.matcher(email).matches();
+        return email != null && !email.contains("..") && EMAIL.matcher(email).matches();
     }
 
     /**
