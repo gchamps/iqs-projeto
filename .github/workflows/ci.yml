@@ -1,0 +1,59 @@
+name: Java CI Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build with Maven
+        run: mvn -B clean package -DskipTests
+
+      - name: Run Unit Tests
+        run: mvn -B test
+
+      - name: Code Quality Check
+        run: mvn -B checkstyle:check
+        continue-on-error: false
+
+      # Exercicio Aula 10: relatorio JaCoCo
+      - name: Generate JaCoCo report
+        run: mvn -B verify
+
+      - name: Upload JaCoCo report
+        uses: actions/upload-artifact@v3
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/
+
+      # Quality gate com SonarQube (requer os secrets SONAR_TOKEN e SONAR_HOST_URL)
+      - name: SonarQube Scan
+        if: ${{ env.SONAR_TOKEN != '' }}
+        uses: SonarSource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+  # Exercicio Aula 10: approval manual antes do deploy.
+  # Crie o environment "staging" em Settings > Environments e marque "Required reviewers".
+  deploy-staging:
+    needs: build-and-test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy (simulado)
+        run: echo "Deploy em staging aprovado manualmente"
