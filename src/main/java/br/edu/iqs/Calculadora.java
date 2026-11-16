@@ -28,6 +28,6 @@ public class Calculadora {
         if (b == 0) {
             throw new ArithmeticException("Divisor não pode ser zero");
         }
-        return a / b;
+        return a / b; // hotfix: divisao validada acima
     }
 }
