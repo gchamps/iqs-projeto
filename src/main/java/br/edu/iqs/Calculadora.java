@@ -6,7 +6,7 @@ package br.edu.iqs;
  * <p>A versao original de {@code divide} nao tratava divisao por zero.
  * Esta e a versao revisada, com fail fast.
  *
- * @author Douglas Duarte
+ * @author Gabriel Champin
  * @version 1.1
  */
 public class Calculadora {

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Endpoints REST de usuarios, documentados com OpenAPI (Aula 12).
  *
- * @author Douglas Duarte
+ * @author Gabriel Champin
  * @version 1.0
  */
 @RestController

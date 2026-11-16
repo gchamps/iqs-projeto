@@ -7,6 +7,9 @@ graph LR
     Cliente[Cliente / Swagger UI] -->|HTTP JSON| Controller[UsuarioController]
     Controller --> Service[UsuarioService]
     Service --> Store[(Mapa em memória)]
+    Cliente -->|HTTP JSON| ProdCtl[ProdutoController]
+    ProdCtl --> Repo[ProdutoRepository]
+    Repo --> H2[(H2 / JPA)]
     Controller -.->|anotações| OpenAPI[springdoc-openapi]
 
     subgraph Biblioteca
@@ -67,3 +70,5 @@ gitGraph
 | 2026-11-16 | Javadoc com `failOnWarnings`              | Critério do desafio da Aula 12: HTML sem warnings |
 | 2026-11-16 | Armazenamento em memória                  | Foco do projeto é qualidade/pipeline, não persistência |
 | 2026-11-16 | Perfis Maven `integration-tests` e `security` | Mantêm `mvn test` rápido; CI roda cada perfil em job próprio |
+| 2026-11-16 | Monolito com Spring Data JPA + H2 (Aula 13) | MVP simples; H2 em desenvolvimento e TestContainers/PostgreSQL recomendado em CI futuro |
+| 2026-11-16 | Manter Spring Boot 2.7 (aula cita 3.x) | springdoc-openapi-ui 1.7.0 (Aula 12) exige `javax.*`; migrar para Boot 3 exige springdoc 2.x |

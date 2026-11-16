@@ -9,7 +9,7 @@ package br.edu.iqs.financeiro;
  * double futuro = f.jurosCompostos(1000.0, 0.01, 12);
  * }</pre>
  *
- * @author Douglas Duarte
+ * @author Gabriel Champin
  * @version 1.1
  * @see #jurosCompostos(double, double, int)
  */

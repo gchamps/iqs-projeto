@@ -6,7 +6,7 @@ package br.edu.iqs.login;
  * <p>Uma senha valida tem ao menos 8 caracteres, uma letra maiuscula,
  * uma minuscula e um digito.
  *
- * @author Douglas Duarte
+ * @author Gabriel Champin
  * @version 1.0
  */
 public class ValidadorSenha {

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 /**
  * IPI: 10% acima de 10.000 e 5% caso contrario.
  *
- * @author Douglas Duarte
+ * @author Gabriel Champin
  * @version 1.0
  */
 public class IpiStrategy implements ImpostoStrategy {
