@@ -65,32 +65,32 @@ public class ProdutoController {
     /**
      * Cria um produto.
      *
-     * @param produto dados do produto
+     * @param request dados do produto
      * @return produto salvo, com id
      */
     @Operation(summary = "Criar produto")
     @ApiResponse(responseCode = "400", description = "Dados inválidos", content = @Content)
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Produto criar(@Valid @RequestBody Produto produto) {
-        produto.setId(null);
-        return repository.save(produto);
+    public Produto criar(@Valid @RequestBody ProdutoRequest request) {
+        return repository.save(request.toEntity());
     }
 
     /**
      * Atualiza um produto existente.
      *
      * @param id identificador
-     * @param produto novos dados
+     * @param request novos dados
      * @return produto atualizado
      */
     @Operation(summary = "Atualizar produto")
     @ApiResponse(responseCode = "404", description = "Produto não encontrado", content = @Content)
     @PutMapping("/{id}")
-    public Produto atualizar(@PathVariable Long id, @Valid @RequestBody Produto produto) {
+    public Produto atualizar(@PathVariable Long id, @Valid @RequestBody ProdutoRequest request) {
         if (!repository.existsById(id)) {
             throw naoEncontrado();
         }
+        Produto produto = request.toEntity();
         produto.setId(id);
         return repository.save(produto);
     }

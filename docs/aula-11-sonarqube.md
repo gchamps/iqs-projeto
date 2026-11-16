@@ -45,3 +45,15 @@ Quality Gates → Create → condições em *New Code* e *Overall*:
 - Bugs críticos = 0 (Reliability Rating = A)
 - Technical Debt Ratio / Maintainability Rating ≥ A
 Associe o gate ao projeto em Project Settings → Quality Gate.
+
+## Resultado da análise local (SonarQube 26.11 Community)
+Primeira análise: 1 bug (regex de e-mail com repetição, S5998) e 2 vulnerabilidades (entidade JPA no `@RequestBody`, S4684).
+Correções: regex sem grupo repetido em `NotificacaoService` e DTO `ProdutoRequest` no `ProdutoController`.
+
+| Métrica | Depois |
+|---------|--------|
+| Bugs / Vulnerabilidades / Code smells | 0 / 0 / 0 |
+| Cobertura | 100% |
+| Dívida técnica | 0 min |
+| Reliability / Security / Maintainability | A / A / A |
+| Quality Gate | OK |
