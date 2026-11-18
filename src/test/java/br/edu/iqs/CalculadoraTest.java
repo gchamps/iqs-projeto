@@ -11,7 +11,7 @@ class CalculadoraTest {
 
     @Test
     void divideNumerosValidos() {
-        assertEquals(5, calculadora.divide(10, 2));
+        assertEquals(1, calculadora.divide(10, 2)); // ERRO PROPOSITAL (Aula 9)
     }
 
     @Test
